@@ -1,0 +1,60 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.6'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id "org.flywaydb.flyway" version "6.1.0"
+}
+
+flyway {
+	configFiles = ['src/main/resources/db/conf/flyway.conf']
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.6'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.5'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.5.6'
+	implementation 'org.springframework.session:spring-session-core'
+	implementation 'org.springframework.session:spring-session-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
+	implementation 'org.flywaydb:flyway-core:8.0.2'
+	implementation "org.apache.commons:commons-lang3:${commonsLang3Ver}"
+	implementation "com.google.guava:guava:${guavaVer}"
+
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.5'
+	runtimeOnly 'com.oracle.ojdbc:ojdbc8'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.25'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+	// テスト
+	testImplementation('org.springframework.boot:spring-boot-starter-test:2.5.6') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.security:spring-security-test:5.5.1'
+	testImplementation "org.flywaydb.flyway-test-extensions:flyway-spring5-test:5.2.4"
+	testImplementation "org.dbunit:dbunit:${dbunitVer}"
+	testImplementation "com.github.springtestdbunit:spring-test-dbunit:${springDbunitVer}"
+	testImplementation "com.h2database:h2:${h2Ver}"
+}
+
+test {
+	useJUnitPlatform()
+}
+
+bootRun {
+	jvmArgs = ['-Doracle.jdbc.J2EE13Compliant=true']
+}

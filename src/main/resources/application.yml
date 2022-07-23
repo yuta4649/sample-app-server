@@ -1,0 +1,23 @@
+spring:
+  profiles.active:
+  datasource:
+    url: jdbc:mysql://localhost:3306/appdb?autoReconnect=true&useSSL=false
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: Asia/Tokyo
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+env:
+  session:
+    maximumSessions: 1
+    timeout: 14400
+# ロギング設定
+logging:
+  level:
+    root: INFO

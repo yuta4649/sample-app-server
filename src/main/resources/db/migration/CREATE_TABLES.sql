@@ -1,0 +1,6 @@
+@@User_TABLE.sql
+@@SPRING_SESSION_TABLE.sql
+@@SPRING_SESSION_ATTRIBUTES_TABLE.sql
+
+commit;
+exit;
