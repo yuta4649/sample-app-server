@@ -44,6 +44,11 @@ public class UserDto implements Serializable {
     private boolean initialPasswordFlg;
 
     /**
+     * ユーザー権限
+     */
+    private String authorizationType;
+
+    /**
      * UserDtoを作成する
      */
     public static UserDto of(Users user) {
@@ -51,7 +56,8 @@ public class UserDto implements Serializable {
                 user.getUserId(),
                 user.getUserName(),
                 user.getLoginId(),
-                StringUtils.isEmpty(user.getPassword())
+                StringUtils.isEmpty(user.getPassword()),
+                user.getAuthorizationType()
         );
     }
 }
