@@ -1,7 +1,7 @@
 package com.example.sample.domain.service.impl;
 
 
-import com.example.sample.domain.entity.User;
+import com.example.sample.domain.entity.Users;
 import com.example.sample.domain.repository.UserRepository;
 import com.example.sample.domain.service.UserDomainService;
 import lombok.RequiredArgsConstructor;
@@ -24,13 +24,11 @@ public class UserDomainServiceImpl implements UserDomainService {
     private final UserRepository userRepository;
 
     /**
-     * メールアドレスからUser情報を取得する
-     *
-     * @param mailAddress メールアドレス
-     * @return User
+     * {@inheritDoc}
      */
     @Override
-    public User getUserByMailAddress(String mailAddress) {
-        return userRepository.getUserByMailAddress(mailAddress).orElseThrow();
+    public Users getAccountInfo(String userId) {
+        return  userRepository.getAccountInfo(userId);
     }
+
 }

@@ -1,6 +1,6 @@
 package com.example.sample.domain.service;
 
-import com.example.sample.domain.entity.User;
+import com.example.sample.domain.entity.Users;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserDomainService {
 
     /**
-     * メールアドレスからUser情報を取得する
+     * Account情報を取得する
      *
-     * @param mailAddress メールアドレス
-     * @return User
+     * @param userId ユーザーID
+     * @return Users ユーザー情報
      */
-    public User getUserByMailAddress(String mailAddress);
+    Users getAccountInfo(String userId);
 }

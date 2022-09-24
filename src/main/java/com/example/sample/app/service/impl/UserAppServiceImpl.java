@@ -3,7 +3,6 @@ package com.example.sample.app.service.impl;
 import com.example.sample.app.dto.UserDto;
 import com.example.sample.app.dto.msg.LoginReqMsg;
 import com.example.sample.app.service.UserAppService;
-import com.example.sample.domain.entity.User;
 import com.example.sample.domain.entity.Users;
 import com.example.sample.domain.repository.UserRepository;
 import com.example.sample.domain.service.UserDomainService;
@@ -45,8 +44,8 @@ public class UserAppServiceImpl implements UserAppService {
      * {@inheritDoc}
      */
     @Override
-    public User getUserByMailAddress(String mailAddress) {
-        return userDomainService.getUserByMailAddress(mailAddress);
+    public Users getAccountInfo(String userId) {
+        return userDomainService.getAccountInfo(userId);
     }
 
     /**
